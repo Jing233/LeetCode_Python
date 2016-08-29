@@ -12,20 +12,53 @@ class Solution(object):
         :type root: TreeLinkNode
         :rtype: nothing
         """
-        if not root:
-            return root
+        if root is None:
+            return
+        nextLevelNode = root
+
+        while nextLevelNode:
+            curNode = nextLevelNode
+            nextLevelNode, preNode = None, None
+            if curNode.left and curNode.right:
+                nextLevelNode = curNode.left
+                curNode.left.next = curNode.right
+                preNode = curNode.right
+            elif curNode.left:
+                nextLevelNode = curNode.left
+                preNode = curNode.left
+            elif curNode.right:
+                nextLevelNode = curNode.right
+                preNode = curNode.right
             
-        level = [root]
-        while level:
-            levelLength = len(level)
-            preNode = None
-            for i in range(levelLength):
-                curNode = level.pop(0)
-                if preNode:
-                    preNode.next = curNode
-                if curNode.left:
-                    level.append(curNode.left)
-                if curNode.right:
-                    level.append(curNode.right)
-                preNode = curNode
+            # decide next level starting point
+            while curNode.next:
+                curNode = curNode.next
+                if curNode.left and curNode.right:
+                    if preNode:
+                        preNode.next = curNode.left
+                    curNode.left.next = curNode.right
+                    preNode = curNode.right
+
+                    if not nextLevelNode:
+                        nextLevelNode = curNode.left
+                elif curNode.left:
+                    if preNode:
+                        preNode.next = curNode.left
+                    preNode = curNode.left
+                    if not nextLevelNode:
+                        nextLevelNode = curNode.left
+                elif curNode.right:
+                    if preNode:
+                        preNode.next = curNode.right
+                    preNode = curNode.right
+                    if not nextLevelNode:
+                        nextLevelNode = curNode.right
+                        
+                    
+                    
+
+        
+
+            
                 
+            
