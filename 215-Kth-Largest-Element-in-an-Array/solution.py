@@ -19,7 +19,6 @@ class Solution(object):
             
             
         pos = partition(nums, 0, len(nums) - 1)
-        print nums
         while pos != len(nums) - k:
             if pos > len(nums) - k:
                 pos = partition(nums, 0, pos - 1)
