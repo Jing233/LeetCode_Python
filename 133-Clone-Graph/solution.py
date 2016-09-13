@@ -18,11 +18,8 @@ class Solution(object):
         toVisit = [node]
         while toVisit:
             curNode = toVisit.pop()
-            if curNode in nodeMap:
-                continue
-            else:
-                nodeMap[curNode] = UndirectedGraphNode(curNode.label)
-                toVisit.extend(curNode.neighbors)
+            nodeMap[curNode] = UndirectedGraphNode(curNode.label)
+            toVisit.extend(filter(lambda x: x not in nodeMap, curNode.neighbors))
         
         # copy all the neighbors
         for oldNode, newNode in nodeMap.items():
