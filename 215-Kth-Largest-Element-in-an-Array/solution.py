@@ -17,13 +17,16 @@ class Solution(object):
             nums[left], nums[end] = nums[end], nums[left]
             return left
             
-            
-        pos = partition(nums, 0, len(nums) - 1)
+
+        start = 0
+        end = len(nums) - 1
+        pos = partition(nums, start, end)
         while pos != len(nums) - k:
             if pos > len(nums) - k:
-                pos = partition(nums, 0, pos - 1)
+                end = pos - 1
             else:
-                pos = partition(nums, pos + 1, len(nums) - 1)
+                start = pos + 1
+            pos = partition(nums, start, end)
 
         return nums[pos]
         
