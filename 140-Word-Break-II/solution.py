@@ -24,7 +24,6 @@ class Solution(object):
         
         
         
-        
         f = [[] for i in range(len(s) + 1)]
         for i in range(len(f)):
             for word in wordDict:
