@@ -17,15 +17,9 @@ A solution set is:
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Adobe](/company/adobe/) [Amazon](/company/amazon/) [Bloomberg](/company/bloomberg/) [Facebook](/company/facebook/) [Microsoft](/company/microsoft/)</span></div>
+<span class="hidebutton">[Amazon](/company/amazon/) [Microsoft](/company/microsoft/) [Bloomberg](/company/bloomberg/) [Facebook](/company/facebook/) [Adobe](/company/adobe/)</span></div>
 
 <div>
 
