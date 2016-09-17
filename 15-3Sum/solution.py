@@ -1,31 +1,21 @@
 class Solution(object):
-    def threeSum(self, nums):
+    def threeSum(self, numbers):
         """
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        nums = sorted(nums)
+        def dfs(valueList, k, currentPos):
+            #print valueList
+            if k == 0 and sum(valueList) == 0:
+                res.append(valueList)
+            elif k > 0 and sum(valueList) <= 0:
+                for i in range(currentPos, len(numbers)):
+                    if (i > currentPos) and (numbers[i] == numbers[i - 1]):
+                        continue
+                    dfs(valueList + [numbers[i]], k - 1, i + 1)
+        
         res = []
-        i = 0
-        for i in range(len(nums)):
-            if i and nums[i] == nums[i - 1]:
-                continue
-            left = i + 1
-            right = len(nums) - 1
-            target = -nums[i]
-            while left < right:
-                temp = nums[left] + nums[right]
-                if temp > target:
-                    right -= 1
-                elif temp < target:
-                    left += 1
-                else:
-                    res.append([nums[i], nums[left], nums[right]])
-                    left += 1
-                    right -= 1
-                    while left < right and nums[left] == nums[left - 1]:
-                        left += 1
-                    while left < right and nums[right] == nums[right + 1]:
-                        right -= 1
+        numbers.sort()
+        dfs([], 3, 0)
         return res
         
