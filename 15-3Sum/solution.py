@@ -6,26 +6,24 @@ class Solution(object):
         """
         nums = sorted(nums)
         res = []
-        i = 0
-        for i in range(len(nums)):
-            if i and nums[i] == nums[i - 1]:
+        for i, num in enumerate(nums):
+            if i and nums[i - 1] == num:
                 continue
             left = i + 1
             right = len(nums) - 1
-            target = -nums[i]
             while left < right:
-                temp = nums[left] + nums[right]
-                if temp > target:
+                tempSum = num + nums[left] + nums[right]
+                if tempSum > 0:
                     right -= 1
-                elif temp < target:
+                elif tempSum < 0:
                     left += 1
                 else:
-                    res.append([nums[i], nums[left], nums[right]])
+                    res.append([num, nums[left], nums[right]])
                     left += 1
                     right -= 1
                     while left < right and nums[left] == nums[left - 1]:
                         left += 1
-                    while left < right and nums[right] == nums[right + 1]:
+                    while right > left and nums[right] == nums[right + 1]:
                         right -= 1
         return res
-        
+                
