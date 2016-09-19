@@ -11,11 +11,10 @@ class Solution(object):
         maxLen = 0
         while right < len(s):
             if s[right] in hashTable:
-                while left < right and s[right] in hashTable:
+                while s[right] in hashTable:
                     del hashTable[s[left]]
                     left += 1
             hashTable[s[right]] = True
             right += 1
             maxLen = max(maxLen, right - left)
-        print maxLen
         return maxLen
