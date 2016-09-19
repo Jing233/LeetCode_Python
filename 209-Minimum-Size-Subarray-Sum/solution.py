@@ -5,9 +5,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        if nums == [] and s > 0:
-            return 0
-            
+
         left = 0
         right = 0
         minLen = len(nums) + 1
