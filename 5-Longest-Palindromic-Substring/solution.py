@@ -4,22 +4,27 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        ansl, ansr, maxx = 0, 1, 0
-        length = len(s)
-        for i in range(1, length * 2):
-            if i & 1 :
-                left = i / 2
-                right = left
-            else :
-                left = i / 2 - 1
+        resLeft, resRight = 0, 0
+        resMaxLen = 0
+        for center in range(2*len(s)):
+            if center & 1:
+                left = center / 2 - 1
                 right = left + 1
-            while (left >= 0) and (right < length) and (s[left] == s[right]):
+            else:
+                left = center / 2
+                right = left
+            
+            while left >= 0 and right < len(s) and s[left] == s[right]:
                 left -= 1
                 right += 1
+            
             left += 1
             right -= 1
-            if right - left > maxx:
-                maxx = right - left
-                ansl = left
-                ansr = right
-        return s[ansl: ansr + 1]
+            if right - left > resMaxLen:
+                resMaxLen = right - left
+                resLeft = left
+                resRight = right
+            
+        
+        return s[resLeft : resRight + 1]
+        
