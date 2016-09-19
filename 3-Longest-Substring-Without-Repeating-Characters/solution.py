@@ -10,7 +10,6 @@ class Solution(object):
         left = 0
         maxLen = 0
         while right < len(s):
-            #print hashTable
             if s[right] in hashTable:
                 while left < right and s[right] in hashTable:
                     del hashTable[s[left]]
@@ -18,4 +17,5 @@ class Solution(object):
             hashTable[s[right]] = True
             right += 1
             maxLen = max(maxLen, right - left)
+        print maxLen
         return maxLen
