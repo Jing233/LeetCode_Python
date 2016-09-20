@@ -11,9 +11,10 @@ class Solution(object):
             
         primeTable = [True for i in xrange(n)]
         primeTable[0], primeTable[1] = False, False
-        
-        for i in range(2, int(math.sqrt(n)) + 1):
+        counter = 0
+        for i in xrange(2, int(math.sqrt(n)) + 1):
             if primeTable[i]:
+                counter += 1
                 temp = i * i
                 while temp < n:
                     primeTable[temp] = False
