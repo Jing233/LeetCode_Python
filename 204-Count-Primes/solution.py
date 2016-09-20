@@ -14,10 +14,10 @@ class Solution(object):
         
         for i in range(2, int(math.sqrt(n)) + 1):
             if primeTable[i]:
-                multi = i
-                while multi * i < n:
-                    primeTable[multi * i] = False
-                    multi += 1
+                temp = i * i
+                while temp < n:
+                    primeTable[temp] = False
+                    temp += i
         counter = 0
         for prime in primeTable:
             if prime:
