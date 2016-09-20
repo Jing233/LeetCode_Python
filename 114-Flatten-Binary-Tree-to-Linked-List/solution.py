@@ -11,19 +11,19 @@ class Solution(object):
         :type root: TreeNode
         :rtype: void Do not return anything, modify root in-place instead.
         """
-        def recur(root):
-            if root is None:
-                return None
-            left = recur(root.left)
-            right = recur(root.right)
-            if left:
-                root.left = None
-                root.right = left
-                while left.right:
-                    left = left.right
-                left.right = right
-            return root
-        recur(root)
+        
+        cur = root
+        while cur:
+            if cur.left:
+                prev = cur.left
+                while prev.right:
+                    prev = prev.right
+                prev.right = cur.right
+                cur.right = cur.left
+                cur.left = None
+            cur = cur.right
+        
+                
 
             
         
