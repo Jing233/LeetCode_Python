@@ -4,7 +4,7 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-
+        
         def computeFreq(word):
             freqList = [0 for _ in range(26)]
             for ch in word:
@@ -20,4 +20,3 @@ class Solution(object):
                 hashTable[key] = [word]
         
         return hashTable.values()
-        
