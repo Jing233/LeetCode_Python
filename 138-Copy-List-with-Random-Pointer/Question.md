@@ -10,16 +10,16 @@ Return a deep copy of the list.
 
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Amazon](/company/amazon/) [Microsoft](/company/microsoft/) [Bloomberg](/company/bloomberg/) [Uber](/company/uber/)</span></div>
+<span class="hidebutton" style="display: none;">[Amazon](/company/amazon/) [Microsoft](/company/microsoft/) [Bloomberg](/company/bloomberg/) [Uber](/company/uber/)</span></div>
 
 <div>
 
 <div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
 
-<span class="hidebutton">[Hash Table](/tag/hash-table/) [Linked List](/tag/linked-list/)</span></div>
+<span class="hidebutton" style="display: none;">[Hash Table](/tag/hash-table/) [Linked List](/tag/linked-list/)</span></div>
 
 <div>
 
 <div id="similar" class="btn btn-xs btn-warning">Show Similar Problems</div>
 
-<span class="hidebutton">[(M) Clone Graph](/problems/clone-graph/)</span></div>
+<span class="hidebutton" style="display: none;">[(M) Clone Graph](/problems/clone-graph/)</span></div>
