@@ -14,7 +14,7 @@ class Solution(object):
         
         for i in range(2, int(math.sqrt(n)) + 1):
             if primeTable[i]:
-                multi = 2
+                multi = i
                 while multi * i < n:
                     primeTable[multi * i] = False
                     multi += 1
