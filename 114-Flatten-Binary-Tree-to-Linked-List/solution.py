@@ -12,23 +12,21 @@ class Solution(object):
         :rtype: void Do not return anything, modify root in-place instead.
         """
         
-        def preOrder(node, nodes):
-            if node is None:
-                return 
-            nodes.append(node)
-            preOrder(node.left, nodes)
-            preOrder(node.right, nodes)
+
+        def postOrder(root, prev):
+            if root is None:
+                return prev
+            
+            prev = postOrder(root.right, prev)
+            prev = postOrder(root.left, prev)
+            
+            root.right = prev
+            root.left = None
+            prev = root
+            return prev
         
-        
-        nodes = []
-        preOrder(root, nodes)
-        right = None
-        while nodes:
-            node = nodes.pop()
-            node.right = right
-            node.left = None
-            right = node
-        
+        prev = None
+        postOrder(root, prev)
         #return root
         
                 
