@@ -5,10 +5,8 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         def recur(nums, start, path, res):
-            if nums is []:
-                return 
             res.append(path)
-            for i in range(start, len(nums)):
+            for i in xrange(start, len(nums)):
                 recur(nums, i + 1, path + [nums[i]], res)
         
         res = []
