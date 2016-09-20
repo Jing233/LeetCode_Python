@@ -11,15 +11,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        def inOrder(node, depth, res):
-            if node is None:
-                return 
-            if depth >= len(res):
-                res.append(node.val)
-            else:
-                res[depth] = node.val
-            inOrder(node.left, depth + 1, res)
-            inOrder(node.right, depth + 1, res)
+        
+        def recur(root, res, depth):
+            if root is None:
+                return
+            
+            if len(res) == depth:
+                res.append(root.val)
+            recur(root.right, res, depth + 1)
+            recur(root.left, res, depth + 1)
         res = []
-        inOrder(root, 0, res)
+        recur(root, res, 0)
         return res
+        
