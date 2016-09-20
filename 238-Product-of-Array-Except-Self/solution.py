@@ -6,9 +6,8 @@ class Solution(object):
         """
         prodFromHead = [1 for i in nums]
         prodFromTail = [1 for i in nums]
-        for i, _ in enumerate(nums):
-            if i >= 1:
-                prodFromHead[i] = prodFromHead[i - 1] * nums[i - 1]
+        for i in xrange(1, len(nums)):
+            prodFromHead[i] = prodFromHead[i - 1] * nums[i - 1]
         
         res = [1 for i in nums]
         res[-1] = prodFromHead[-1]
