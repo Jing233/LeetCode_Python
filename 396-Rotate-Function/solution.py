@@ -4,18 +4,13 @@ class Solution(object):
         :type A: List[int]
         :rtype: int
         """
-        import sys
-        def computeF(A):
-            f = 0
-            for i, num in enumerate(A):
-                f += i * num
-            return f
-        
         if A == []:
             return 0
         sumA = sum(A)
-        maxF = computeF(A)
-        lastF = maxF
+        lastF = 0
+        for i, num in enumerate(A):
+            lastF += i * num
+        maxF = lastF
         i = 0
         while i < len(A):
             F = lastF - sumA + len(A) * A[i] 
@@ -23,4 +18,3 @@ class Solution(object):
             lastF = F
             i += 1
         return maxF
-        
