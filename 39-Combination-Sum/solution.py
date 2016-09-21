@@ -5,17 +5,22 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        output = []
-        if candidates==[]:
-            return []
-        
-        def recur_find(index=0, current=0, current_path=[]):
-            if current == target:
-                output.append(current_path)
-                return
-            for i in range(index,len(candidates)):
-                new_number = current+candidates[i]
-                if new_number <= target:
-                    recur_find(i, new_number, current_path+[candidates[i]])
-        recur_find()
-        return output
+        nums = sorted(candidates)
+        L = len(nums)
+        # table[i] is a list of all possible solution if the target is i
+        table = [[] for i in range(target + 1)]
+        for i in range(1, target+1):
+            for j in range(L):
+                num = nums[j]
+                if num > i:
+                    break
+                if num == i:
+                    table[i].append([num])
+                # DP substructure is presented here
+                elif table[i - num]:
+                    # for each sub-solution
+                    for sub in table[i - num]:
+                        # this if is used for eliminating duplicate elements. This is also why we sort the candidates at first.
+                        if num >= sub[-1]:
+                            table[i].append(sub + [num])
+        return table[target]
