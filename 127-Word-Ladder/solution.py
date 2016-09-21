@@ -26,5 +26,5 @@ class Solution(object):
         toVisit = [beginWord]
         if beginWord == endWord:
             return 1
-        wordList -= {beginWord, endWord}
+        wordList.discard(beginWord)
         return bfs(wordList, toVisit, 1)
