@@ -5,15 +5,17 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        def dfs(candidates, start, path, tempSum, target, res):
-            if tempSum > target:
-                return
-            elif tempSum == target:
-                res.append(path)
-                return
-            for i in range(start, len(candidates)):
-                dfs(candidates, i, path + [candidates[i]], tempSum + candidates[i], target, res)
+        output = []
+        if candidates==[]:
+            return []
         
-        res = []
-        dfs(candidates, 0, [], 0, target, res)
-        return res
+        def recur_find(index=0, current=0, current_path=[]):
+            if current == target:
+                output.append(current_path)
+                return
+            for i in range(index,len(candidates)):
+                new_number = current+candidates[i]
+                if new_number <= target:
+                    recur_find(i, new_number, current_path+[candidates[i]])
+        recur_find()
+        return output
