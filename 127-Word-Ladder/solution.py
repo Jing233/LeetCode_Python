@@ -8,7 +8,8 @@ class Solution(object):
         """
         length = 2
         front, back = set([beginWord]), set([endWord])
-        wordDict.discard(beginWord)
+        wordDict.add(beginWord)
+        wordDict.add(endWord)
         while front:
             # generate all valid transformations
             front = wordDict & (set(word[:index] + ch + word[index+1:] for word in front 
