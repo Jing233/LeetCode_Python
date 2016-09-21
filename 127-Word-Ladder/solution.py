@@ -12,8 +12,10 @@ class Solution(object):
         wordDict.add(endWord)
         while front:
             # generate all valid transformations
-            front = wordDict & (set(word[:index] + ch + word[index+1:] for word in front 
-                                for index in range(len(beginWord)) for ch in 'abcdefghijklmnopqrstuvwxyz'))
+            front = wordDict & (set(word[:index] + ch + word[index+1:] 
+                                for word in front 
+                                    for index in range(len(beginWord))
+                                        for ch in 'abcdefghijklmnopqrstuvwxyz'))
             if front & back:
                 # there are common elements in front and back, done
                 return length
