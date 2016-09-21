@@ -1,30 +1,25 @@
 class Solution(object):
-    def ladderLength(self, beginWord, endWord, wordList):
+    def ladderLength(self, beginWord, endWord, wordDict):
         """
         :type beginWord: str
         :type endWord: str
         :type wordList: Set[str]
         :rtype: int
         """
-        import string
-        def bfs(wordList, toVisit, depth):
-            if len(toVisit) == 0:
-                return 0
-            tempToVisit = []
-            for word in toVisit:
-                for i in range(len(word)):
-                    for replace in string.lowercase:
-                        tempWord = word[:i] + replace + word[i + 1:]
-                        if tempWord == endWord:
-                            return depth + 1
-                        if tempWord in wordList:
-                            wordList.remove(tempWord)
-                            tempToVisit.append(tempWord)
-            
-            return bfs(wordList, tempToVisit, depth + 1)
-            
-        toVisit = [beginWord]
-        if beginWord == endWord:
-            return 1
-        wordList.discard(beginWord)
-        return bfs(wordList, toVisit, 1)
+        length = 2
+        front, back = set([beginWord]), set([endWord])
+        wordDict.discard(beginWord)
+        while front:
+            # generate all valid transformations
+            front = wordDict & (set(word[:index] + ch + word[index+1:] for word in front 
+                                for index in range(len(beginWord)) for ch in 'abcdefghijklmnopqrstuvwxyz'))
+            if front & back:
+                # there are common elements in front and back, done
+                return length
+            length += 1
+            if len(front) > len(back):
+                # swap front and back for better performance (fewer choices in generating nextSet)
+                front, back = back, front
+            # remove transformations from wordDict to avoid cycle
+            wordDict -= front
+        return 0
