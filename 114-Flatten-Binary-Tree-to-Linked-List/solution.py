@@ -11,25 +11,19 @@ class Solution(object):
         :type root: TreeNode
         :rtype: void Do not return anything, modify root in-place instead.
         """
+        rightStack = []
         
-
-        def postOrder(root, prev):
-            if root is None:
-                return prev
-            
-            prev = postOrder(root.right, prev)
-            prev = postOrder(root.left, prev)
-            
-            root.right = prev
-            root.left = None
-            prev = root
-            return prev
-        
-        prev = None
-        postOrder(root, prev)
-        #return root
-        
-                
-
+        cur = root
+        while cur:
+            if cur.left:
+                if cur.right:
+                    rightStack.append(cur.right)
+                cur.right = cur.left
+                cur.left = None
+            else:
+                if not cur.right and rightStack:
+                    temp = rightStack.pop()
+                    cur.right = temp
+            cur = cur.right
             
         
