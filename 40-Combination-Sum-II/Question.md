@@ -24,9 +24,9 @@ A solution set is:
 
 <div>
 
-<div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
+[Subscribe](/subscribe/) to see which companies asked this question
 
-<span class="hidebutton">[Snapchat](/company/snapchat/)</span></div>
+</div>
 
 <div>
 
