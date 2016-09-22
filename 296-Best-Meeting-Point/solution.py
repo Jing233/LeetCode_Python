@@ -12,8 +12,9 @@ class Solution(object):
                 if grid[i][j] == 1:
                     xPositions.append(i)
                     yPositions.append(j)
+                    
         
-        xPositions = sorted(xPositions)
+        #xPositions = sorted(xPositions)
         yPositions = sorted(yPositions)
         minDistance = 0
         left = 0
