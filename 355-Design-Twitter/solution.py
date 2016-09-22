@@ -37,7 +37,7 @@ class Twitter(object):
                     heapq.heappush(recentTweets, (userTweet[1], userTweet[0]))
                 else:
                     if recentTweets[0][0] < userTweet[1]:
-                        heapq.heappushpop(recentTweets, (userTweet[1], userTweet[0]))
+                        heapq.heapreplace(recentTweets, (userTweet[1], userTweet[0]))
         res = []
         while recentTweets:
             res.append(heapq.heappop(recentTweets)[1])
