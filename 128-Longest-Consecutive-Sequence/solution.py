@@ -4,7 +4,6 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
         hashTable = {}
         for num in nums:
             hashTable[num] = True
@@ -24,4 +23,3 @@ class Solution(object):
             maxLen = max(right - left + 1, maxLen)
         
         return maxLen
-            
