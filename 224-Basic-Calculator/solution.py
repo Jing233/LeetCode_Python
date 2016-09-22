@@ -78,6 +78,3 @@ class Solution(object):
         if rpn:
             val = evalRPN(rpn)
         return val
-        
-                     
-        
