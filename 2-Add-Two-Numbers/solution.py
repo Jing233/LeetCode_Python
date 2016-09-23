@@ -11,26 +11,21 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
         carry = 0
         dummy = ListNode(0)
-        cur = dummy
-        while l1 and l2:
-            sum = l1.val + l2.val + carry
-            cur.next = ListNode(sum % 10)
-            carry = sum / 10
-            cur, l1, l2 = cur.next, l1.next, l2.next
+        head = dummy
+        while l1 or l2 or carry:
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            tempVal = val1 + val2 + carry
+            carry = tempVal / 10
+            head.next = ListNode(tempVal % 10)
+            head = head.next
+            if l1:
+                l1 = l1.next
+            if l2:
+                l2 = l2.next
         
-        if l1:
-            l3 = l1
-        else:
-            l3 = l2
-        while l3:
-            sum = l3.val + carry
-            cur.next = ListNode(sum % 10)
-            carry = sum / 10
-            cur, l3 = cur.next, l3.next
         
-        if carry:
-            cur.next = ListNode(1)
+        
         return dummy.next
