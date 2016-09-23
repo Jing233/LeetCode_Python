@@ -9,7 +9,7 @@ class Solution(object):
         j = len(b) - 1
         carry = 0
         res = ''
-        while i >=0 or j >= 0 or carry:
+        while i >=0 or j >= 0:
             val1 = int(a[i]) if i >= 0 else 0
             val2 = int(b[j]) if j >= 0 else 0
             val = (val1 + val2 + carry) % 2
@@ -17,5 +17,7 @@ class Solution(object):
             res += str(val)
             i -= 1
             j -= 1
-            
+        
+        if carry:
+            res += '1'
         return res[::-1]
