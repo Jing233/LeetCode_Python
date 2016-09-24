@@ -10,33 +10,37 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        if len(lists) == 0:
-            return lists
-            
-        def merge(listA, listB):
+        import heapq
+        import sys
+        
+        def merge(l1, l2):
             dummy = ListNode(0)
             cur = dummy
-            while listA and listB:
-                if listA.val <= listB.val:
-                    cur.next = listA
-                    listA = listA.next
+            while l1 or l2:
+                val1 = l1.val if l1 else sys.maxint
+                val2 = l2.val if l2 else sys.maxint
+                if val1 >= val2:
+                    cur.next = l2
+                    l2 = l2.next
                 else:
-                    cur.next = listB
-                    listB = listB.next
+                    cur.next = l1
+                    l1 = l1.next
                 cur = cur.next
-            if listA:
-                cur.next = listA
-            else:
-                cur.next = listB
             return dummy.next
+            
         
-        while len(lists) > 1:
-            if len(lists) & 1:
-                for i in range(1, 1 + len(lists) / 2):
-                    lists[i] = merge(lists[i], lists[len(lists) / 2 + i])
-                lists = lists[:1 + len(lists) / 2]
-            else:
-                for i in range(len(lists) / 2):
-                    lists[i] = merge(lists[i], lists[len(lists) / 2 + i])
-                lists = lists[:len(lists) / 2]
-        return lists[0]
+        pqueue = []
+        for node in lists:
+            if node is None:
+                continue
+            heapq.heappush(pqueue, (node.val, node))
+        size = len(pqueue)
+        for _ in xrange(size - 1):
+            _, head1 = heapq.heappop(pqueue)
+            _, head2 = heapq.heappop(pqueue)
+            head3 = merge(head1, head2)
+            heapq.heappush(pqueue, (head3.val, head3))
+        if size == 0:
+            return None
+        return pqueue[0][1]
+            
