@@ -14,11 +14,11 @@ class Solution(object):
         intervals = sorted(intervals, key=lambda x: x.start)
         i = 0
         while i < len(intervals):
-            temp = Interval(intervals[i].start, intervals[i].end)
-            while i + 1 < len(intervals) and intervals[i + 1].start <= temp.end:
-                temp.end = max(temp.end, intervals[i + 1].end)
+            start, end = intervals[i].start, intervals[i].end
+            while i + 1 < len(intervals) and intervals[i + 1].start <= end:
+                end = max(end, intervals[i + 1].end)
                 i += 1
-            res.append(temp)
-            i += 1
+            res.append(Interval(start, end))
+            i +=  1
         return res
             
