@@ -18,6 +18,8 @@ class Solution(object):
             if s == '' and len(path) == 4:
                 res.append('.'.join(path))
                 return
+            if len(path) > 4:
+                return
             for i in range(1, min(4, len(s)+1)):
                 if isValidPart(s[:i]):
                     dfs(s[i:], path + [s[:i]], res)
