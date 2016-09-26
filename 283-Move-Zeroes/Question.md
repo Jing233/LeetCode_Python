@@ -16,9 +16,15 @@ Special thanks to [@jianchao.li.fighter](https://leetcode.com/discuss/user/jianc
 
 <div>
 
+[Subscribe](/subscribe/) to see which companies asked this question
+
+</div>
+
+<div>
+
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Bloomberg](/company/bloomberg/) [Facebook](/company/facebook/)</span></div>
+<span class="hidebutton" style="display: none;">[Bloomberg](/company/bloomberg/) [Facebook](/company/facebook/)</span></div>
 
 <div>
 
