@@ -11,15 +11,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        def inOrder(root, res):
+        def inOrder(root):
+            left = right = 0
             if root.left:
                 if not (root.left.left or root.left.right):
-                    res.append(root.left.val)
-                inOrder(root.left, res)
+                    left += root.left.val
+                left += inOrder(root.left)
             if root.right:
-                inOrder(root.right, res)
+                right += inOrder(root.right)
+            return left + right
             
-        res = []
-        if root:
-            inOrder(root, res)
-        return sum(res)
+        return inOrder(root) if root else 0
+        
