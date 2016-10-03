@@ -16,7 +16,7 @@ A solution is `["cats and dog", "cat sand dog"]`.
 
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton" style="display: none;">[Dropbox](/company/dropbox/) [Google](/company/google/) [Uber](/company/uber/) [Snapchat](/company/snapchat/) [Twitter](/company/twitter/)</span></div>
+<span class="hidebutton">[Dropbox](/company/dropbox/) [Google](/company/google/) [Uber](/company/uber/) [Snapchat](/company/snapchat/) [Twitter](/company/twitter/)</span></div>
 
 <div>
 
