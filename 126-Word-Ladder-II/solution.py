@@ -13,10 +13,9 @@ class Solution(object):
                 result.append([word] + path[::-1])
                 return
             
-            path.append(word)
             for w in preMap[word]:
-                buildPath(path, w)
-            path.pop()
+                buildPath(path + [word], w)
+            
         
         
         wordlist.add(beginWord)
