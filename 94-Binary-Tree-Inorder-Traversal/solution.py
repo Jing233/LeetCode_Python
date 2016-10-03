@@ -11,13 +11,10 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        res = []
-        stack = []
-        node = root
+        res, stack, node = [], [], root
         while True:
             if node is None:
-                if stack == []:
-                    break
+                if stack == []: break
                 node = stack.pop()
                 res.append(node.val)
                 node = node.right
