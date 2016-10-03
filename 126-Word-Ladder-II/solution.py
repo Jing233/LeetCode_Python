@@ -16,14 +16,10 @@ class Solution(object):
             for w in preMap[word]:
                 buildPath(path + [word], w)
             
-        
-        
         wordlist.add(beginWord)
         wordlist.add(endWord)
-        
         length = len(beginWord)
         preMap = collections.defaultdict(list)
-
         result = []
         curLevel = {beginWord}
         while True:
@@ -33,8 +29,7 @@ class Solution(object):
                 wordlist.remove(word)
             for word in preLevel:
                 for i in range(length):
-                    left = word[:i]
-                    right = word[i +1:]
+                    left = word[:i]; right = word[i +1:]
                     for c in string.lowercase:
                         if c != word[i]:
                             nextWord = left + c + right
