@@ -13,19 +13,17 @@ class Solution(object):
                 tempToVisit = []
                 for word in toVisit:
                     for i in range(len(word)):
-                        for replace in string.lowercase:
-                            tempWord = word[:i] + replace + word[i + 1:]
-                            if tempWord == endWord:
+                        for c in string.lowercase:
+                            nextWord = word[:i] + c + word[i + 1:]
+                            if nextWord == endWord:
                                 return depth + 1
-                            if tempWord in wordList:
-                                wordList.remove(tempWord)
-                                tempToVisit.append(tempWord)
+                            if nextWord in wordList:
+                                wordList.remove(nextWord)
+                                tempToVisit.append(nextWord)
                 toVisit = tempToVisit
                 depth += 1
             return 0
             
         toVisit = [beginWord]
-        if beginWord == endWord:
-            return 1
         wordList -= {beginWord, endWord}
         return bfs(wordList, toVisit)
