@@ -14,15 +14,9 @@ Given `"pwwkew"`, the answer is `"wke"`, with the length of 3\. Note that the an
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Adobe](/company/adobe/) [Amazon](/company/amazon/) [Bloomberg](/company/bloomberg/) [Yelp](/company/yelp/)</span></div>
+<span class="hidebutton">[Amazon](/company/amazon/) [Adobe](/company/adobe/) [Bloomberg](/company/bloomberg/) [Yelp](/company/yelp/)</span></div>
 
 <div>
 
