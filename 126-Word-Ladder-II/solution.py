@@ -7,16 +7,16 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         import string
-        
+        import collections
         def buildPath(path, word):
             if len(preMap[word]) == 0:
-                result.append([word] + path)
+                result.append([word] + path[::-1])
                 return
             
-            path.insert(0, word)
+            path.append(word)
             for w in preMap[word]:
                 buildPath(path, w)
-            path.pop(0)
+            path.pop()
         
         
         wordlist.add(beginWord)
