@@ -1,30 +1,31 @@
 class Solution(object):
-    def ladderLength(self, beginWord, endWord, wordDict):
+    def ladderLength(self, beginWord, endWord, wordList):
         """
         :type beginWord: str
         :type endWord: str
         :type wordList: Set[str]
         :rtype: int
         """
-        front, back=set([beginWord]), set([endWord]) 
-        length=2
-        width=len(beginWord)
-        charSet=list(string.lowercase)
-        wordDict.discard(beginWord)
-        wordDict.discard(endWord)
-        while front:
-            newFront=set()
-            for phrase in front:
-                for i in xrange(width):
-                    for c in charSet:
-                        nw=phrase[:i]+c+phrase[i+1:]
-                        if nw in back:
-                            return length
-                        if nw in wordDict:
-                            newFront.add(nw)
-            front=newFront
-            if len(front)>len(back):
-                front,back=back,front
-            wordDict-=front
-            length+=1
-        return 0
+        import string
+        def bfs(wordList, toVisit):
+            depth = 1
+            while toVisit:
+                tempToVisit = []
+                for word in toVisit:
+                    for i in range(len(word)):
+                        for replace in string.lowercase:
+                            tempWord = word[:i] + replace + word[i + 1:]
+                            if tempWord == endWord:
+                                return depth + 1
+                            if tempWord in wordList:
+                                wordList.remove(tempWord)
+                                tempToVisit.append(tempWord)
+                toVisit = tempToVisit
+                depth += 1
+            return 0
+            
+        toVisit = [beginWord]
+        if beginWord == endWord:
+            return 1
+        wordList -= {beginWord, endWord}
+        return bfs(wordList, toVisit)
